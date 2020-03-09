@@ -4,6 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>POM - SYD</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- <script>
+        $(document).ready(function(){
+            $(pois).load("load-data.php");
+        });
+    </script> -->
   <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/kIIQ8kl.png">
   <style>
 
@@ -14,6 +22,10 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    body {
+      font-family:'Source Sans Pro', sans-serif;
     }
 
     #block-wrp {
@@ -68,10 +80,23 @@
 
   <script type="text/javascript">
 
+    //Get data from PHP
+    var pois = [];
+      $.get("load-data.php").done(function (data){
+        data = data.substring(2, data.length -2);
+  
+        pois = data.split("],[");
+        pois = pois.map(elem => elem.replace(/\"/g, ""));
+
+        pois = pois.map(elem => elem.split(/,{1}(?=[^_|\s])/g)); //Result is an
+        console.log(pois);
+
+      });
+      
+
     var map1, map2;
     
-    
-
+    // Stylings to make the maps blank
     var myStyle = [
          {
            featureType: "administrative",
@@ -100,6 +125,8 @@
          }
        ];
 
+    
+
     function drawMap() {
 
       var infoWindowSingle = new google.maps.InfoWindow;
@@ -111,6 +138,7 @@
         gestureHandling: 'none',
         zoomControl: false,
         streetViewControl:false,
+        keyboardShortcuts: false
       }
 
       mapOptions.center = new google.maps.LatLng(50.805832, -1.087222); // Portsmouth
@@ -134,135 +162,158 @@
         addMarker({coords:event.latLng});
       });
 
-      // Array of markers
-      var markers = [{
+      
+        
+      
+      var markerstest = [];
+      var index;
+
+      for(index = 0; index < pois.length; index++) {
+        var tempMarker = {
           coords: {
-            lat: -33.856634,
-            lng: 151.215278
+            lat : parseFloat(pois[index][2]),
+            lng : parseFloat(pois[index][3])
           },
-          map: map2,
-          //iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-          content: 'Sydney Opera House'
-        },
-        {
-          coords: {
-            lat: 50.79557,
-            lng: -1.10851
-          },
-          map: map1,
-          content: 'Spinnaker Tower'
-        },
-        {
-          coords: {
-            lat: 50.80221,
-            lng: -1.10885
-          },
-          map: map1,
-          content: 'Mary Rose Museum'
-        },
-        {
-          coords: {
-            lat: 50.82469,
-            lng: -1.11744
-          },
-          map: map1,
-          content: 'Portsmouth Harbour'
-        },
-        {
-          coords: {
-            lat: 50.77799,
-            lng: -1.08882
-          },
-          map: map1,
-          content: 'Southsea Castle'
-        },
-        {
-          coords: {
-            lat: 50.80706,
-            lng: -1.08721
-          },
-          map: map1,
-          content: 'Charles Dickens Birthplace Museum'
-        },
-        {
-          coords: {
-            lat: 50.80361,
-            lng: -1.07666
-          },
-          map: map1,
-          content: 'St Mary&#39;s Church'
-        },
-        {
-          coords: {
-            lat: 33.8712,
-            lng: 151.2133
-          },
-          map: map1,
-          content: 'St Mary&#39;s Cathedral'
-        },
-        {
-          coords: {
-            lat: -33.85457,
-            lng: 151.20361
-          },
-          map: map2,
-          content: 'Walsh Bay'
-        },
-        {
-          coords: {
-            lat: -33.87315,
-            lng: 151.20611
-          },
-          map: map2,
-          content: 'Sydney Town Hall'
-        },
-        {
-          coords: {
-            lat: -33.90647,
-            lng: 151.2035
-          },
-          map: map2,
-          content: 'Green Square'
-        },
-        {
-          coords: {
-            lat: -33.8636,
-            lng: 151.21144
-          },
-          map: map2,
-          content: 'Museum of Sydney'
-        },
-        {
-          coords: {
-            lat: -33.86737,
-            lng: 151.19522
-          },
-          map: map2,
-          content: 'The Star Sydney'
-        },
-        {
-          coords: {
-            lat: -33.86418,
-            lng: 151.21657
-          },
-          map: map2,
-          content: 'Royal Botanic Gardens'
-        },
-        {
-          coords: {
-            lat: -33.85457,
-            lng: 151.20361
-          },
-          map: map2,
-          content: 'Walsh Bay'
-        },
-      ];
+          map : (pois[index][7] == "por" ? map1 : map2),
+          
+          content: pois[index][1]
+        };
+        markerstest.push(tempMarker);
+      };
+
+      console.log(markerstest);
+      
+      // // Array of markers, manually added initially for testing
+      // var markers = [{
+      //     coords: {
+      //       lat: -33.856634,
+      //       lng: 151.215278
+      //     },
+      //     map: map2,
+      //     //iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+      //     content: 'Sydney Opera House'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.79557,
+      //       lng: -1.10851
+      //     },
+      //     map: map1,
+      //     content: 'Spinnaker Tower'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.80221,
+      //       lng: -1.10885
+      //     },
+      //     map: map1,
+      //     content: 'Mary Rose Museum'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.82469,
+      //       lng: -1.11744
+      //     },
+      //     map: map1,
+      //     content: 'Portsmouth Harbour'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.77799,
+      //       lng: -1.08882
+      //     },
+      //     map: map1,
+      //     content: 'Southsea Castle'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.80706,
+      //       lng: -1.08721
+      //     },
+      //     map: map1,
+      //     content: 'Charles Dickens Birthplace Museum'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 50.80361,
+      //       lng: -1.07666
+      //     },
+      //     map: map1,
+      //     content: 'St Mary&#39;s Church'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: 33.8712,
+      //       lng: 151.2133
+      //     },
+      //     map: map1,
+      //     content: 'St Mary&#39;s Cathedral'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.85457,
+      //       lng: 151.20361
+      //     },
+      //     map: map2,
+      //     content: 'Walsh Bay'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.87315,
+      //       lng: 151.20611
+      //     },
+      //     map: map2,
+      //     content: 'Sydney Town Hall'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.90647,
+      //       lng: 151.2035
+      //     },
+      //     map: map2,
+      //     content: 'Green Square'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.8636,
+      //       lng: 151.21144
+      //     },
+      //     map: map2,
+      //     content: 'Museum of Sydney'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.86737,
+      //       lng: 151.19522
+      //     },
+      //     map: map2,
+      //     content: 'The Star Sydney'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.86418,
+      //       lng: 151.21657
+      //     },
+      //     map: map2,
+      //     content: 'Royal Botanic Gardens'
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -33.85457,
+      //       lng: 151.20361
+      //     },
+      //     map: map2,
+      //     content: 'Walsh Bay'
+      //   },
+      // ];
 
 
       // Loop through markers
-      for (var i = 0; i < markers.length; i++) {
+      console.log(markerstest.length);
+      for (var i = 0; i < markerstest.length; i++) {
         // Add marker
-        addMarker(markers[i]);
+        addMarker(markerstest[i]);
+        console.log(markerstest[i]);
       }
 
       function addMarker(props) {
@@ -271,13 +322,13 @@
           map: props.map,
         });
 
-        // Check for customicon
+        // Check for customicond
         if (props.iconImage) {
           // Set icon image
           marker.setIcon(props.iconImage);
         }
 
-        // Check for general info
+        // Click on the marker to show the POI's name and image
         if (props.content) {
 
           marker.addListener('click', function(){
@@ -298,6 +349,7 @@
   </script>
 
   <script async defer src="https://maps.google.com/maps/api/js?key=AIzaSyDHj25MUPt4n2aLHslXKQs4GOHy9wdH5_0&callback=drawMap"></script>
+  
 
 </body>
 
