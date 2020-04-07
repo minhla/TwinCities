@@ -213,10 +213,10 @@ map2.set('styles', myStyleTest);
 
 // Loop through markers
 console.log(markers.length);
-for (var i = 0; i < markerstest.length; i++) {
+for (var i = 0; i < markers.length; i++) {
   // Add marker
-  addMarker(markerstest[i]);
-  console.log(markerstest[i]);
+  addMarker(markers[i]);
+  console.log(marker[i]);
 }
 
 function addMarker(props) {
