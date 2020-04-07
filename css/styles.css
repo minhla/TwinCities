@@ -1,0 +1,48 @@
+
+    a {
+        text-decoration: none;
+        color: #2E95EE;
+      }
+  
+      a:hover {
+        text-decoration: underline;
+      }
+  
+      body {
+        font-family:'Source Sans Pro', sans-serif;
+      }
+  
+      #block-wrp {
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+      }
+  
+      #block-wrp .block-item {
+        height: 95vh;
+        width: 50%;
+        position: relative;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column
+      }
+  
+      #block-wrp .block-item .map-item {
+        height: 100%;
+        border: 10px solid #fff;
+  
+      }
+  
+      #block-wrp .block-item span.city-name {
+        text-align: center;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: Helvetica;
+        background: #fff;
+        height: 5%;
+        line-height: 2em;
+  
+      }
