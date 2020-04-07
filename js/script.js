@@ -86,129 +86,158 @@ map2.set('styles', myStyleTest);
 //   markerstest.push(tempMarker);
 // };
 
-      // Array of markers
-      var markers = [{
-        coords: {
-          lat: -33.856634,
-          lng: 151.215278
-        },
-        map: map2,
-        //iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        content: 'Sydney Opera House'
-      },
-      {
-        coords: {
-          lat: 50.79557,
-          lng: -1.10851
-        },
-        map: map1,
-        content: 'Spinnaker Tower'
-      },
-      {
-        coords: {
-          lat: 50.80221,
-          lng: -1.10885
-        },
-        map: map1,
-        content: 'Mary Rose Museum'
-      },
-      {
-        coords: {
-          lat: 50.82469,
-          lng: -1.11744
-        },
-        map: map1,
-        content: 'Portsmouth Harbour'
-      },
-      {
-        coords: {
-          lat: 50.77799,
-          lng: -1.08882
-        },
-        map: map1,
-        content: 'Southsea Castle'
-      },
-      {
-        coords: {
-          lat: 50.80706,
-          lng: -1.08721
-        },
-        map: map1,
-        content: 'Charles Dickens Birthplace Museum'
-      },
-      {
-        coords: {
-          lat: 50.80361,
-          lng: -1.07666
-        },
-        map: map1,
-        content: 'St Mary&#39;s Church'
-      },
-      {
-        coords: {
-          lat: 33.8712,
-          lng: 151.2133
-        },
-        map: map1,
-        content: 'St Mary&#39;s Cathedral'
-      },
-      {
-        coords: {
-          lat: -33.85457,
-          lng: 151.20361
-        },
-        map: map2,
-        content: 'Walsh Bay'
-      },
-      {
-        coords: {
-          lat: -33.87315,
-          lng: 151.20611
-        },
-        map: map2,
-        content: 'Sydney Town Hall'
-      },
-      {
-        coords: {
-          lat: -33.90647,
-          lng: 151.2035
-        },
-        map: map2,
-        content: 'Green Square'
-      },
-      {
-        coords: {
-          lat: -33.8636,
-          lng: 151.21144
-        },
-        map: map2,
-        content: 'Museum of Sydney'
-      },
-      {
-        coords: {
-          lat: -33.86737,
-          lng: 151.19522
-        },
-        map: map2,
-        content: 'The Star Sydney'
-      },
-      {
-        coords: {
-          lat: -33.86418,
-          lng: 151.21657
-        },
-        map: map2,
-        content: 'Royal Botanic Gardens'
-      },
-      {
-        coords: {
-          lat: -33.85457,
-          lng: 151.20361
-        },
-        map: map2,
-        content: 'Walsh Bay'
-      },
-    ];
+var icons = {
+  museum: {
+    icon: './images/statue.png'
+  },
+  bay: {
+    icon: './images/cruise.png'
+  },
+  church: {
+    icon: './images/church.png'
+  },
+  tourism: {
+    icon: './images/camera.png'
+  }
+};
+
+  // Array of markers
+var markers = [{
+    coords: {
+      lat: -33.856634,
+      lng: 151.215278
+    },
+    map: map2,
+    content: 'Sydney Opera House',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: 50.79557,
+      lng: -1.10851
+    },
+    map: map1,
+    content: 'Spinnaker Tower',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: 50.80221,
+      lng: -1.10885
+    },
+    map: map1,
+    content: 'Mary Rose Museum',
+    type: 'museum'
+  },
+  {
+    coords: {
+      lat: 50.82469,
+      lng: -1.11744
+    },
+    map: map1,
+    content: 'Portsmouth Harbour',
+    type: 'bay'
+  },
+  {
+    coords: {
+      lat: 50.77799,
+      lng: -1.08882
+    },
+    map: map1,
+    content: 'Southsea Castle',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: 50.80706,
+      lng: -1.08721
+    },
+    map: map1,
+    content: 'Charles Dickens Birthplace Museum',
+    type: 'museum'
+  },
+  {
+    coords: {
+      lat: 50.80361,
+      lng: -1.07666
+    },
+    map: map1,
+    content: 'St Mary&#39;s Church',
+    type: 'church'
+  },
+  {
+    coords: {
+      lat: 33.8712,
+      lng: 151.2133
+    },
+    map: map1,
+    content: 'St Mary&#39;s Cathedral',
+    type: 'church'
+  },
+  {
+    coords: {
+      lat: -33.85457,
+      lng: 151.20361
+    },
+    map: map2,
+    content: 'Walsh Bay',
+    type: 'bay'
+  },
+  {
+    coords: {
+      lat: -33.87315,
+      lng: 151.20611
+    },
+    map: map2,
+    content: 'Sydney Town Hall',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: -33.90647,
+      lng: 151.2035
+    },
+    map: map2,
+    content: 'Green Square',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: -33.8636,
+      lng: 151.21144
+    },
+    map: map2,
+    content: 'Museum of Sydney',
+    type: 'museum'
+  },
+  {
+    coords: {
+      lat: -33.86737,
+      lng: 151.19522
+    },
+    map: map2,
+    content: 'The Star Sydney',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: -33.86418,
+      lng: 151.21657
+    },
+    map: map2,
+    content: 'Royal Botanic Gardens',
+    type: 'tourism'
+  },
+  {
+    coords: {
+      lat: -33.85457,
+      lng: 151.20361
+    },
+    map: map2,
+    content: 'Walsh Bay',
+    type: 'bay'
+  },
+];
 
 
 // Loop through markers
@@ -216,7 +245,7 @@ console.log(markers.length);
 for (var i = 0; i < markers.length; i++) {
   // Add marker
   addMarker(markers[i]);
-  console.log(marker[i]);
+  console.log(markers[i]);
 }
 
 function addMarker(props) {
@@ -225,23 +254,18 @@ function addMarker(props) {
     map: props.map,
   });
 
-  // Check for customicond
-  if (props.iconImage) {
-    // Set icon image
-    marker.setIcon(props.iconImage);
-  }
 
   // Click on the marker to show the POI's name and image
   if (props.content) {
 
     marker.addListener('click', function(){
-      infoWindowSingle.setContent("<div style='float:left'><img src='https://i.imgur.com/5xzPg3f.png' style='width:50px;'></div><div style='float:right;padding: 5px;'>"+props.content+"</div>");
+      infoWindowSingle.setContent("<div style='float:left'><img src="+icons[props.type].icon+" style='width:45px;'></div><div style='float:right;padding: 5px;'>"+props.content+"</div>");
       infoWindowSingle.open(map2, marker);
     });
     
 
     marker.addListener('click', function(){
-      infoWindowSingle.setContent("<div style='float:left'><img src='https://i.imgur.com/5xzPg3f.png' style='width:50px;'></div><div style='float:right;padding: 5px;'>"+props.content+"</div>");
+      infoWindowSingle.setContent("<div style='float:left'><img src="+icons[props.type].icon+" style='width:45px;'></div><div style='float:right;padding: 5px;'>"+props.content+"</div>");
       infoWindowSingle.open(map1, marker);
     });
     
