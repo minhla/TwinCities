@@ -69,27 +69,150 @@ map2 = new google.maps.Map(document.getElementById("mapCanvas2"), mapOptions);
 map1.set('styles', myStyleTest); //Apply the stylings to make the maps blank
 map2.set('styles', myStyleTest);      
 
-var markerstest = [];
-var index;
+//This code is used for MySQL Database
+// var markerstest = [];
+// var index;
 
-for(index = 0; index < pois.length; index++) {
-  var tempMarker = {
-    coords: {
-      lat : parseFloat(pois[index][2]),
-      lng : parseFloat(pois[index][3])
-    },
-    map : (pois[index][7] == "por" ? map1 : map2),
+// for(index = 0; index < pois.length; index++) {
+//   var tempMarker = {
+//     coords: {
+//       lat : parseFloat(pois[index][2]),
+//       lng : parseFloat(pois[index][3])
+//     },
+//     map : (pois[index][7] == "por" ? map1 : map2),
     
-    content: pois[index][1]
-  };
-  markerstest.push(tempMarker);
-};
+//     content: pois[index][1]
+//   };
+//   markerstest.push(tempMarker);
+// };
 
-console.log(markerstest);
+      // Array of markers
+      var markers = [{
+        coords: {
+          lat: -33.856634,
+          lng: 151.215278
+        },
+        map: map2,
+        //iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+        content: 'Sydney Opera House'
+      },
+      {
+        coords: {
+          lat: 50.79557,
+          lng: -1.10851
+        },
+        map: map1,
+        content: 'Spinnaker Tower'
+      },
+      {
+        coords: {
+          lat: 50.80221,
+          lng: -1.10885
+        },
+        map: map1,
+        content: 'Mary Rose Museum'
+      },
+      {
+        coords: {
+          lat: 50.82469,
+          lng: -1.11744
+        },
+        map: map1,
+        content: 'Portsmouth Harbour'
+      },
+      {
+        coords: {
+          lat: 50.77799,
+          lng: -1.08882
+        },
+        map: map1,
+        content: 'Southsea Castle'
+      },
+      {
+        coords: {
+          lat: 50.80706,
+          lng: -1.08721
+        },
+        map: map1,
+        content: 'Charles Dickens Birthplace Museum'
+      },
+      {
+        coords: {
+          lat: 50.80361,
+          lng: -1.07666
+        },
+        map: map1,
+        content: 'St Mary&#39;s Church'
+      },
+      {
+        coords: {
+          lat: 33.8712,
+          lng: 151.2133
+        },
+        map: map1,
+        content: 'St Mary&#39;s Cathedral'
+      },
+      {
+        coords: {
+          lat: -33.85457,
+          lng: 151.20361
+        },
+        map: map2,
+        content: 'Walsh Bay'
+      },
+      {
+        coords: {
+          lat: -33.87315,
+          lng: 151.20611
+        },
+        map: map2,
+        content: 'Sydney Town Hall'
+      },
+      {
+        coords: {
+          lat: -33.90647,
+          lng: 151.2035
+        },
+        map: map2,
+        content: 'Green Square'
+      },
+      {
+        coords: {
+          lat: -33.8636,
+          lng: 151.21144
+        },
+        map: map2,
+        content: 'Museum of Sydney'
+      },
+      {
+        coords: {
+          lat: -33.86737,
+          lng: 151.19522
+        },
+        map: map2,
+        content: 'The Star Sydney'
+      },
+      {
+        coords: {
+          lat: -33.86418,
+          lng: 151.21657
+        },
+        map: map2,
+        content: 'Royal Botanic Gardens'
+      },
+      {
+        coords: {
+          lat: -33.85457,
+          lng: 151.20361
+        },
+        map: map2,
+        content: 'Walsh Bay'
+      },
+    ];
 
 
 // Loop through markers
-console.log(markerstest.length);
+console.log(markers.length);
 for (var i = 0; i < markerstest.length; i++) {
   // Add marker
   addMarker(markerstest[i]);
