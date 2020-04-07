@@ -66,16 +66,8 @@ map1 = new google.maps.Map(document.getElementById("mapCanvas1"), mapOptions);
 mapOptions.center = new google.maps.LatLng(cities[1][4],cities[1][5]); // Sydney
 map2 = new google.maps.Map(document.getElementById("mapCanvas2"), mapOptions);
 
-//Lat and Long pulled from MongoDB with NodeJS
-// mapOptions.center = new google.maps.LatLng(localStorage.getItem('citylat1'), localStorage.getItem('citylon1')); // Portsmouth
-// map1 = new google.maps.Map(document.getElementById("mapCanvas1"), mapOptions);
-
-// mapOptions.center = new google.maps.LatLng(localStorage.getItem('citylat2'), localStorage.getItem('citylon2')); // Sydney
-// map2 = new google.maps.Map(document.getElementById("mapCanvas2"), mapOptions);
-
 map1.set('styles', myStyleTest); //Apply the stylings to make the maps blank
 map2.set('styles', myStyleTest);      
-  
 
 var markerstest = [];
 var index;
