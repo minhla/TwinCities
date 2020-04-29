@@ -241,11 +241,11 @@ var markers = [{
 
 
 // Loop through markers
-console.log(markers.length);
+console.log(markers);
 for (var i = 0; i < markers.length; i++) {
   // Add marker
   addMarker(markers[i]);
-  console.log(markers[i]);
+  // console.log(markers[i]);
 }
 
 function addMarker(props) {
