@@ -26,7 +26,7 @@ $.get("./php/load-cities.php").done(function (data) {
 var map1, map2;
 
 // Stylings to make the maps blank
-var myStyleTest = [
+var myStyle = [
 {
 "elementType": "labels",
 "stylers": [
@@ -66,25 +66,8 @@ map1 = new google.maps.Map(document.getElementById("mapCanvas1"), mapOptions);
 mapOptions.center = new google.maps.LatLng(-33.865143, 151.209900); // Sydney
 map2 = new google.maps.Map(document.getElementById("mapCanvas2"), mapOptions);
 
-map1.set('styles', myStyleTest); //Apply the stylings to make the maps blank
-map2.set('styles', myStyleTest);      
-
-//This code is used for MySQL Database
-// var markerstest = [];
-// var index;
-
-// for(index = 0; index < pois.length; index++) {
-//   var tempMarker = {
-//     coords: {
-//       lat : parseFloat(pois[index][2]),
-//       lng : parseFloat(pois[index][3])
-//     },
-//     map : (pois[index][7] == "por" ? map1 : map2),
-    
-//     content: pois[index][1]
-//   };
-//   markerstest.push(tempMarker);
-// };
+map1.set('styles', myStyle); //Apply the stylings to make the maps blank
+map2.set('styles', myStyle);      
 
 var icons = {
   museum: {
@@ -268,7 +251,6 @@ function addMarker(props) {
       infoWindowSingle.setContent("<div style='float:left'><img src="+icons[props.type].icon+" style='width:45px;'></div><div style='float:right;padding: 5px;'>"+props.content+"</div>");
       infoWindowSingle.open(map1, marker);
     });
-    
 
   }
 }
